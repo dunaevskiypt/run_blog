@@ -12,9 +12,9 @@ class PostCategory (models.Model):
 
 
 class Post (models.Model):
-    image = models.ImageField(upload_to='product_images')
-    image_2 = models.ImageField(upload_to='product_images')
-    image_extra = models.ImageField(upload_to='masonry')
+    image = models.ImageField(upload_to='post_images')
+    image_2 = models.ImageField(upload_to='post_images')
+    image_extra = models.ImageField(upload_to='post_images')
     category = models.ForeignKey(to=PostCategory, on_delete=models.CASCADE)
     post_author = models.CharField(max_length=128, default='Unknown Author')
     title = models.CharField(max_length=128)
