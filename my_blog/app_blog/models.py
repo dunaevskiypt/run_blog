@@ -14,8 +14,9 @@ class PostCategory (models.Model):
 class Post (models.Model):
     image = models.ImageField(upload_to='product_images')
     image_2 = models.ImageField(upload_to='product_images')
-    image_extra = models.ImageField(upload_to='product_images')
+    image_extra = models.ImageField(upload_to='masonry')
     category = models.ForeignKey(to=PostCategory, on_delete=models.CASCADE)
+    post_author = models.CharField(max_length=128, default='Unknown Author')
     title = models.CharField(max_length=128)
     description = models.TextField(max_length=500)
     time_create = models.DateTimeField(auto_now_add=True)
