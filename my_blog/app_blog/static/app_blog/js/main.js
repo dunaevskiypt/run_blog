@@ -4,7 +4,7 @@
  * ------------------------------------------------------------------- */
 
 ;(function (html) {
-	'use strict'
+	;('use strict')
 
 	/* preloader
 	 * -------------------------------------------------- */
@@ -224,6 +224,10 @@
 			slidesPerView: 1,
 			effect: 'fade',
 			speed: 1000,
+			autoplay: {
+				delay: 5000, // Задержка между слайдами в миллисекундах (например, 5000 = 5 секунд)
+				disableOnInteraction: false, // Отключает автопрокрутку после взаимодействия пользователя (по умолчанию true)
+			},
 			pagination: {
 				el: '.swiper-pagination',
 				clickable: true,
