@@ -1,111 +1,171 @@
-{% extends "base.html" %}
+{% extends "app_blog/base.html" %}{% load static%} {% block wrapper %}
 
-{% load static%}
+<!-- page wrap
+    ================================================== -->
+<div id="page" class="s-pagewrap ss-home">
+	{% endblock %} {% block content %}
+	<section id="content" class="s-content">
+		<!-- hero -->
+		<div class="hero">
+			<div class="hero__slider swiper-container">
+				<div class="swiper-wrapper">
+					<article class="hero__slide swiper-slide">
+						<div class="hero__entry-image" style="background-image: url('{% static 'app_blog/images/thumbs/featured/featured-01_2000.jpg' %}');"></div>
 
+						<div class="hero__entry-text">
+							<div class="hero__entry-text-inner">
+								<div class="hero__entry-meta">
+									<span class="cat-links">
+										<a href="category.html">Inspiration</a>
+									</span>
+								</div>
+								<h2 class="hero__entry-title">
+									<a href="single-standard.html">
+										Understanding and Using Negative Space.
+									</a>
+								</h2>
+								<p class="hero__entry-desc">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+									do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									Ut enim ad minim veniam, quis nostrud corporis est laudantium
+									voluptatum consectetur adipiscing.
+								</p>
+								<a class="hero__more-link" href="single-standard.html"
+									>Read More</a
+								>
+							</div>
+						</div>
+					</article>
+					<article class="hero__slide swiper-slide">
+						<div class="hero__entry-image" style="background-image: url('{% static 'app_blog/images/thumbs/featured/featured-02_2000.jpg' %}');"></div>
 
-{% block content %}
-<div id="bricks" class="bricks">
+						<div class="hero__entry-text">
+							<div class="hero__entry-text-inner">
+								<div class="hero__entry-meta">
+									<span class="cat-links">
+										<a href="category.html">Health</a>
+									</span>
+								</div>
+								<h2 class="hero__entry-title">
+									<a href="single-standard.html">
+										10 Reasons Why Being in Nature Is Good For You.
+									</a>
+								</h2>
+								<p class="hero__entry-desc">
+									Voluptas harum sequi rerum quasi quisquam. Est tenetur ut
+									doloribus in aliquid animi nostrum. Tempora quibusdam ad
+									nulla. Quis autem possimus dolores est est fugiat saepe vel
+									aut. Earum consequatur.
+								</p>
+								<a class="hero__more-link" href="single-standard.html"
+									>Read More</a
+								>
+							</div>
+						</div>
+					</article>
+					<article class="hero__slide swiper-slide">
+				<div class="hero__entry-image" style="background-image: url('{% static 'app_blog/images/thumbs/featured/featured-03_2000.jpg' %}');"></div>
 
-  <div class="masonry">
+						<div class="hero__entry-text">
+							<div class="hero__entry-text-inner">
+								<div class="hero__entry-meta">
+									<span class="cat-links">
+										<a href="category.html">Lifestyle</a>
+									</span>
+								</div>
+								<h2 class="hero__entry-title">
+									<a href="single-standard.html">
+										Six Relaxation Techniques to Reduce Stress.
+									</a>
+								</h2>
+								<p class="hero__entry-desc">
+									Quasi consequatur quia excepturi ullam velit. Repellat velit
+									vel occaecati neque perspiciatis quibusdam nulla. Unde et
+									earum. Nostrum nulla optio debitis odio modi. Quis autem
+									possimus dolores est est fugiat saepe vel aut.
+								</p>
+								<a class="hero__more-link" href="single-standard.html"
+									>Read More</a
+								>
+							</div>
+						</div>
+					</article>
+				</div>
+				<!-- swiper-wrapper -->
 
-    <div class="bricks-wrapper" data-animate-block>
+				<div class="swiper-pagination"></div>
+			</div>
+			<!-- end hero slider -->
 
-      <div class="grid-sizer"></div>
+			<a href="#bricks" class="hero__scroll-down smoothscroll">
+				<svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+					<path
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.5"
+						d="M10.25 6.75L4.75 12L10.25 17.25"
+					></path>
+					<path
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.5"
+						d="M19.25 12H5"
+					></path>
+				</svg>
+				<span>Scroll</span>
+			</a>
+		</div>
+		<!-- end hero -->
 
+		<!--  masonry -->
+		<div id="bricks" class="bricks">
+    <div class="masonry">
+      <div class="bricks-wrapper" data-animate-block>
+        <div class="grid-sizer"></div>
 
+        {% for post in posts %}
 
+        <article class="brick entry" data-animate-el>
+          <div class="entry__thumb">
+            <a href="single-standard.html" class="thumb-link">
+              <img src="{{post.image.url}}" srcset="{{post.image_2.url}} 1x, {{post.image_extra.url}} 2x" alt="" />
+            </a>
+          </div>
+          <!-- end entry__thumb -->
 
-      {% for post in posts %}
-
-
-
-      <article class="brick entry" data-animate-el>
-
-        <div class="entry__thumb">
-          <a href="single-standard.html" class="thumb-link">
-            <img src="{{post.image.url}}" srcset="{{post.image_2.url}} 1x, {{post.image_extra.url}} 2x" alt="">
-          </a>
-        </div> <!-- end entry__thumb -->
-
-        <div class="entry__text">
-          <div class="entry__header">
-            <div class="entry__meta">
-              <span class="cat-links">
-                <a href="#">{{post.category}}</a>
-              </span>
-              <span class="byline">
-                By:
-                <a href="#0">{{post.post_author}}</a>
-              </span>
+          <div class="entry__text">
+            <div class="entry__header">
+              <div class="entry__meta">
+                <span class="cat-links">
+                  <a href="#">{{post.category}}</a>
+                </span>
+                <span class="byline">
+                  By:
+                  <a href="#0">{{post.post_author}}</a>
+                </span>
+              </div>
+              <h1 class="entry__title">
+                <a href="single-standard.html">{{post.title}}</a>
+              </h1>
             </div>
-            <h1 class="entry__title"><a href="single-standard.html">{{post.title}}</a></h1>
+            <div class="entry__excerpt">
+              <p>{{post.description}}</p>
+            </div>
+            <a class="entry__more-link" href="#0">Read More</a>
           </div>
-          <div class="entry__excerpt">
-            <p>
-              {{post.description}}
-            </p>
-          </div>
-          <a class="entry__more-link" href="#0">Read More</a>
-        </div> <!-- end entry__text -->
+          <!-- end entry__text -->
+        </article>
+        <!-- end article -->
 
-      </article> <!-- end article -->
-
-
-      {% endfor %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div> <!-- end bricks-wrapper -->
-
-  </div> <!-- end masonry-->
-
-
-  <!-- pagination -->
-  <div class="row pagination">
-    <div class="column lg-12">
-      <nav class="pgn">
-        <ul>
-          <li>
-            <a class="pgn__prev" href="#0">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M10.25 6.75L4.75 12L10.25 17.25"></path>
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M19.25 12H5"></path>
-              </svg>
-            </a>
-          </li>
-          <li><a class="pgn__num" href="#0">1</a></li>
-          <li><span class="pgn__num current">2</span></li>
-          <li><a class="pgn__num" href="#0">3</a></li>
-          <li><a class="pgn__num" href="#0">4</a></li>
-          <li><a class="pgn__num" href="#0">5</a></li>
-          <li><span class="pgn__num dots">…</span></li>
-          <li><a class="pgn__num" href="#0">8</a></li>
-          <li>
-            <a class="pgn__next" href="#0">
-              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M13.75 6.75L19.25 12L13.75 17.25"></path>
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M19 12H4.75"></path>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </nav> <!-- end pgn -->
-    </div> <!-- end column -->
-  </div> <!-- end pagination -->
-
-</div> <!-- end bricks -->
-{% endblock %}
+        {% endfor %}
+      </div>
+      <!-- end bricks-wrapper -->
+    </div>
+    <!-- end masonry-->
+		<!-- end bricks -->
+	</section>
+	<!-- end s-content -->
+	{% endblock %}
+</div>
