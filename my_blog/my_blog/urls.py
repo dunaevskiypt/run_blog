@@ -24,7 +24,9 @@ from app_blog.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
-    path('app/', include('app_blog.urls', namespace='app_blog'))
+    path('app/', include('app_blog.urls', namespace='app_blog')),
+    path('users/', include('users.urls', namespace='users')),
+
 ]
 
 
