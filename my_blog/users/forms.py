@@ -18,10 +18,39 @@ class UserLoginForm(AuthenticationForm):
 
     class Meta:
         model = User
-        fields = ('usermae', 'password')
+        fields = ('username', 'password')
 
 
-# class UserRegistretionForm(UserCreationForm):
-#     class Meta:
-#         model = User
-#         fields = ('usermae', 'password')
+class UserRegistrationForm(UserCreationForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'input100',
+        'placeholder': 'Enter name',
+    }))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'input100',
+        'placeholder': 'Enter surname',
+    }))
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'input100',
+        'placeholder': 'Enter username',
+    }))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'input100',
+        'placeholder': 'Enter email',
+    }))
+
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={
+
+        'class': 'input100',
+        'placeholder': 'Enter password',
+    }))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+
+        'class': 'input100',
+        'placeholder': 'Сonfirm  password',
+    }))
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'username',
+                  'email', 'password1', 'password2')
